@@ -38,10 +38,10 @@ const expected5 = null;
 function nthLast(items, nthToLast) {
     var index = items.length - nthToLast;
 
-    if(items[index] == undefined) {
-        return null;
-    } else {
+    if(index >= 0 && index < items.length) {
         return items[index];
+    } else {
+        return null;
     }
 }
 
