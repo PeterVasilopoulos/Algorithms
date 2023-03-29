@@ -50,7 +50,17 @@ console.log(twoSum([3, 3], 6)); // [0,1]
 
 
 function twoSum2(arr, target) {
-    
+    var seen = {};
+
+    for(var x = 0; x < arr.length; x++) {
+        var currentValue = arr[x];
+        var delta = target - currentValue;
+
+        if(seen.hasOwnProperty(delta)) {
+            return [seen[delta], x];
+        }
+        seen[currentValue] = x;
+    }
 }
 
 console.log(twoSum2([2, 11, 7, 15], 9)); // [0,2]
