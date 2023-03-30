@@ -30,7 +30,7 @@ function minToFront(nums) {
     // code here
     let min = nums[0];
     let minIndex = 0;
-    for (let x = 0; x < nums.length; x++) {
+    for (let x = 1; x < nums.length; x++) {
         if (nums[x] < min) {
             min = nums[x];
             minIndex = x;
