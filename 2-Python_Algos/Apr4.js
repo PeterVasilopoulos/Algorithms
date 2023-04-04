@@ -5,10 +5,6 @@
     Default the separator to a comma with a space after it if no separator is provided
 */
 
-
-
-
-
 const arr1 = [1, 2, 3];
 const separator1 = ", ";
 const expected1 = "1, 2, 3";
