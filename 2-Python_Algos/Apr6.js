@@ -26,7 +26,17 @@ const expected4 = false;
    * @returns {boolean} Whether the given str is a palindrome or not.
    */
 function isPalindrome(str) {
-    
+    let new_str = "";
+    for(let x = str.length - 1; x >= 0; x--) {
+        new_str += str[x];
+    }
+    return new_str == str;
 }
+
+console.log(isPalindrome(str1))
+console.log(isPalindrome(str2))
+console.log(isPalindrome(str3))
+console.log(isPalindrome(str4))
+
 
 /*****************************************************************************/
