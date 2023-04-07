@@ -28,7 +28,13 @@ const expected2 = {};
    */
 function zipArraysIntoMap(keys, values) {
     let new_map = {};
-    for()
+    for(let x = 0; x < keys.length; x++) {
+        new_map[keys[x]] = values[x];
+    }
+    return new_map;
 }
+
+console.log(zipArraysIntoMap(keys1, vals1))
+console.log(zipArraysIntoMap(keys2, vals2))
 
 /*****************************************************************************/
