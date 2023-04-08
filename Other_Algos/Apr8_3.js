@@ -11,8 +11,12 @@ s2 = "LVIII"
 // 58
 
 // Test 3
-s = "MCMXCIV"
+s3 = "MCMXCIV"
 // 1994
+
+// Test 4
+s4 = "IV"
+// 4
 
 
 // Function
@@ -27,11 +31,33 @@ symbols = {
 }
 
 var romanToInt = function(s) {
-    for(let x = 0; x < s.length; x++) {
-        
+    let num = 0;
+    for(let x = s.length - 1; x >= 0; x--) {
+        if((s[x] == "V" || s[x] == "X") && s[x - 1] == "I") {
+            num += symbols[s[x]] - 1;
+            x--;
+        }
+        else if((s[x] == "L" || s[x] == "C") && s[x -1] == "X") {
+            num += symbols[s[x]] -10;
+            x--;
+        }
+        else if((s[x] == "D" || s[x] == "M") && s[x - 1] == "C") {
+            num += symbols[s[x]] - 100;
+            x--;
+        }
+        else {
+            num += symbols[s[x]];
+        }
     }
+    return num;
 };
 
 
 // Testing
 console.log(romanToInt(s1))
+
+console.log(romanToInt(s2))
+
+console.log(romanToInt(s3))
+
+console.log(romanToInt(s4))
