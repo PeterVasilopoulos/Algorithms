@@ -26,6 +26,31 @@ const expected4 = true;
  * @param {Array<0|1>} queue
  * @returns {Boolean}
  */
-function socialDistancingEnforcer(queue) {}
+function socialDistancingEnforcer(queue) {
+    let space = 0;
+    let valid = true;
+
+    for(let x = 0; x < queue.length; x++) {
+        if(queue[x] == 1) {
+            space = 0;
+            for(let y = x + 1; y < queue.length; y++) {
+                if(queue[y] == 0) {
+                    space++;
+                } else if(space < 6) {
+                    valid = false;
+                }
+            }
+        }
+    }
+    return valid;
+}
 
 /*****************************************************************************/
+
+console.log(socialDistancingEnforcer(queue1));
+
+console.log(socialDistancingEnforcer(queue2));
+
+console.log(socialDistancingEnforcer(queue3));
+
+console.log(socialDistancingEnforcer(queue4));
