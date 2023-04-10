@@ -38,6 +38,7 @@ function socialDistancingEnforcer(queue) {
                     space++;
                 } else if(space < 6) {
                     valid = false;
+                    return valid;
                 }
             }
         }
