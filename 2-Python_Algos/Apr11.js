@@ -38,9 +38,12 @@ function stringDedupe(str) {
         if(!letters[str[i]]) {
             new_str += str[i];
             letters[str[i]] = true;
+        } else {
+            new_str = new_str.replace(str[i], "");
+            new_str += str[i];
         }
     }
-    
+
     return new_str;
 }
 
