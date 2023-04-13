@@ -21,6 +21,9 @@ const expected4 = "orldHello W";
 
 const rotateAmnt5 = 13;
 const expected5 = "ldHello Wor";
+
+const rotateAmnt6 = 12312423513453451235;
+
 /* 
 Explanation: this is 2 more than the length so it ends up being the same
 as rotating it 2 characters because after rotating every letter it gets back
@@ -56,3 +59,4 @@ console.log(rotateStr(str, rotateAmnt2));
 console.log(rotateStr(str, rotateAmnt3));
 console.log(rotateStr(str, rotateAmnt4));
 console.log(rotateStr(str, rotateAmnt5));
+console.log(rotateStr(str, rotateAmnt6));
