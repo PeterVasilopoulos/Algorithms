@@ -31,6 +31,22 @@ const expected3 = 1;
  *    floor decimals.
  * @returns {number} The result of !n.
  */
-function factorial(n) {}
+function factorial(n) {
+    if(n == 0) {
+        return 1;
+    }
+
+    n = Math.floor(n)
+
+    if(n == 1) {
+        return n
+    } else {
+        return n*factorial(n-1)
+    }
+}
 
 /*****************************************************************************/
+
+console.log(factorial(num1))
+console.log(factorial(num2))
+console.log(factorial(num3))
