@@ -31,6 +31,19 @@ const expected6 = 21;
  * @param {number} num The position of the desired number in the fibonacci sequence.
  * @returns {number} The fibonacci number at the given position.
  */
-function fibonacci(num) {}
+function fibonacci(num) {
+    if(num < 2) {
+        return num
+    } else {
+        return fibonacci(num - 1) + fibonacci(num - 2)
+    }
+}
 
 /*****************************************************************************/
+
+console.log(fibonacci(num1))
+console.log(fibonacci(num2))
+console.log(fibonacci(num3))
+console.log(fibonacci(num4))
+console.log(fibonacci(num5))
+console.log(fibonacci(num6))
