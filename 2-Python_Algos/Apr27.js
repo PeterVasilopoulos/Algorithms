@@ -33,7 +33,7 @@ const expected5 = 6;
  */
 function sumToOneDigit(num) {
     var str_num = num.toString()
-    if (str_num.length <= 1) {
+    if(str_num.length <= 1) {
         return num
     }
     var sum = 0
