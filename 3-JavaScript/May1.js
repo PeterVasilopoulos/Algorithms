@@ -41,4 +41,5 @@ const bubbleSort = (nums) => {
 
     return nums
 }
+
 console.log(bubbleSort(numsRandomOrder));
