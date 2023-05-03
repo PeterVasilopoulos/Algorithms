@@ -56,6 +56,24 @@ const expected = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
  * @returns {Array<number>} The given array after being sorted.
  */
 const insertionSort = (nums) => {
-    
+    for(let i = 0; i < nums.length; i++) {
+        let swap = i;
+
+        for(let j = i - 1; j >= 0; j--) {
+            if(nums[j] > nums[i]) {
+                swap = j;
+            }
+        }
+
+        if(swap != i) {
+            let value = nums[i];
+            for(let z = i; z > swap; z--) {
+                nums[z] = nums[z - 1];
+            }
+            nums[swap] = value;
+        }
+    }
+
+    return nums;
 }
 console.log(insertionSort(numsRandomOrder));
