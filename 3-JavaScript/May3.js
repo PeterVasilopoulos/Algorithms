@@ -47,6 +47,8 @@ const numsRandomOrder = [9, 2, 5, 6, 4, 3, 7, 10, 1, 8];
 const numsReversed = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
 const expected = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
+const test = [5, 1, 4, 6, 8, 4, 2, 5, 4, 2, 7, 8, 8, 8, 4, 2];
+
 /**
  * Sorts the given array in-place.
  * Best: O(n) linear when array is already sorted.
@@ -77,3 +79,4 @@ const insertionSort = (nums) => {
     return nums;
 }
 console.log(insertionSort(numsRandomOrder));
+console.log(insertionSort(test))
