@@ -58,7 +58,7 @@ const test = [5, 1, 4, 6, 8, 4, 2, 5, 4, 2, 7, 8, 8, 8, 4, 2];
  * @returns {Array<number>} The given array after being sorted.
  */
 const insertionSort = (nums) => {
-    for(let i = 0; i < nums.length; i++) {
+    for(let i = 1; i < nums.length; i++) {
         let swap = i;
 
         for(let j = i - 1; j >= 0; j--) {
