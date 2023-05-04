@@ -7,17 +7,17 @@
   Venn Diagram Visualization (bottom) https://i.ytimg.com/vi/sdflTUW6gHo/maxresdefault.jpg
 */
 
-// const numsA1 = [0, 1, 2, 2, 2, 7];
-// const numsB1 = [2, 2, 6, 6, 7];
-// const expected1 = [2, 7];
+const numsA1 = [0, 1, 2, 2, 2, 7];
+const numsB1 = [2, 2, 6, 6, 7];
+const expected1 = [2, 7];
 
-// const numsA2 = [0, 1, 2, 2, 2, 7];
-// const numsB2 = [2, 2];
-// const expected2 = [2];
+const numsA2 = [0, 1, 2, 2, 2, 7];
+const numsB2 = [2, 2];
+const expected2 = [2];
 
-// const numsA3 = [0, 1, 2, 2, 2, 7];
-// const numsB3 = [10];
-// const expected3 = [];
+const numsA3 = [0, 1, 2, 2, 2, 7];
+const numsB3 = [10];
+const expected3 = [];
 
 /**
  * Venn Diagram Visualization (bottom):
@@ -31,9 +31,48 @@
  *    sorted and contains only the shared values between the two arrays
  *    deduped.
  */
-function orderedIntersection(sortedA, sortedB) {}
+function orderedIntersection(sortedA, sortedB) {
+    const mapA = {};
+    const mapB = {};
+    const arr = [];
+
+    // Add values from sortedA to mapA
+    for(let i = 0; i < sortedA.length; i++) {
+        if(sortedA[i] in mapA) {
+            mapA[sortedA[i]]++;
+        } else {
+            mapA[sortedA[i]] = 1;
+        }
+    }
+
+    // Add values from sortedB to mapB
+    for(let j = 0; j < sortedB.length; j++) {
+        if(sortedB[j] in mapB) {
+            mapB[sortedB[j]]++;
+        } else {
+            mapB[sortedB[j]] = 1;
+        }
+    }
+
+    // Compare values in mapS and mapB
+    for(objA in mapA) {
+        for(objB in mapB) {
+            if(objA == objB) {
+                arr.push(parseInt(objB));
+            }
+        }
+    }
+
+    // Return
+    return arr;
+}
 
 /*****************************************************************************/
 
 
-module.exports = { orderedIntersection };
+console.log(orderedIntersection(numsA1, numsB1))
+console.log(orderedIntersection(numsA2, numsB2))
+console.log(orderedIntersection(numsA3, numsB3))
+
+
+// module.exports = { orderedIntersection };
