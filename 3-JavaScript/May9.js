@@ -47,5 +47,52 @@ const expected5 = [];
  *    not the combined amount from both sets.
  */
 function orderedMultisetUnion(sortedA, sortedB) {
+    // Create a map for sortedA values
+    const mapA = {};
     
+    // Add values from sortedA into mapA
+    for(let i = 0; i < sortedA.length; i++) {
+        if(sortedA[i] in mapA) {
+            mapA[sortedA[i]]++;
+        } else {
+            mapA[sortedA[i]] = 1;
+        }
+    }
+
+    // Create a map for sortedB values
+    const mapB = {};
+    
+    // Add values from sortedB into mapB
+    for(let i = 0; i < sortedB.length; i++) {
+        if(sortedB[i] in mapB) {
+            mapB[sortedB[i]]++;
+        } else {
+            mapB[sortedB[i]] = 1;
+        }
+    }
+
+    // Combine the maps together and keep the max values
+    for(key in mapB) {
+        if(!mapA[key] || mapA[key] < mapB[key]) {
+            mapA[key] = mapB[key];
+        }
+    }
+    
+    // Create an array to hold the values
+    const newArr = [];
+
+    // Loop through mapA and add values to newArr
+    for(key in mapA) {
+        for(let i = 0; i < mapA[key]; i++) {
+            newArr.push(key);
+        }
+    }
+
+    return newArr;
 }
+
+console.log(orderedMultisetUnion(nums1A, nums1B));
+console.log(orderedMultisetUnion(nums2A, nums2B));
+console.log(orderedMultisetUnion(nums3A, nums3B));
+console.log(orderedMultisetUnion(nums4A, nums4B));
+console.log(orderedMultisetUnion(nums5A, nums5B));
