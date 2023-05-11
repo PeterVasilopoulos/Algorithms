@@ -35,6 +35,8 @@ function kMostFrequent(nums, k) {
     const map = {};
     const arr = [];
 
+    // Loop to add each element in array to the map
+    // and count number of times it shows up
     for(let i = 0; i < nums.length; i++) {
         if(!map[nums[i]]) {
             map[nums[i]] = 1;
@@ -44,6 +46,7 @@ function kMostFrequent(nums, k) {
     }
 
     let j = 0;
+
     while(j < k) {
         let max = 0;
         let maxId = 0;
@@ -55,7 +58,7 @@ function kMostFrequent(nums, k) {
             }
         }
         arr.push(maxId);
-        map[maxId] = 0;
+        delete map[maxId];
         j++;
     }
 
