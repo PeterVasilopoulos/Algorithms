@@ -30,9 +30,39 @@ const expected3 = [6, 3, 2];
  * @param {number} k Represents the amount of numbers that should be returned.
  * @returns {Array<number>} The k most frequently occurring numbers.
  */
+
 function kMostFrequent(nums, k) {
-    //Code goes here
+    const map = {};
+    const arr = [];
+
+    for(let i = 0; i < nums.length; i++) {
+        if(!map[nums[i]]) {
+            map[nums[i]] = 1;
+        } else {
+            map[nums[i]]++;
+        }
+    }
+
+    let j = 0;
+    while(j < k) {
+        let max = 0;
+        let maxId = 0;
+
+        for(key in map) {
+            if(map[key] > max) {
+                max = map[key];
+                maxId = key;
+            }
+        }
+        arr.push(maxId);
+        map[maxId] = 0;
+        j++;
+    }
+
+    return arr
 }
+
+
 console.log(kMostFrequent(nums1, k1));
 console.log(kMostFrequent(nums2, k2));
 console.log(kMostFrequent(nums3, k3));
