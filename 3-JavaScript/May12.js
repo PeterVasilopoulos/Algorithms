@@ -65,4 +65,4 @@ console.log("");
 
 console.log(twoSum2(nums1, targetSum1));
 console.log(twoSum2(nums2, targetSum2));
-console.log(twoSum2(nums3, targetSum3));
+console.log(twoSum2(nums3, targetSum3)); 
