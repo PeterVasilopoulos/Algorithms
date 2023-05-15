@@ -72,8 +72,16 @@ const expected3 = null;
  */
 function findByIdAndUpdate(id, updatedVals, collection) {
     for(let i = 0; i < collection.length; i++) {
-        
+        if(collection[i].id === id) {
+            for(key in updatedVals) {
+                if(key in collection[i]) {
+                    collection[i][key] = updatedVals[key];
+                }
+            }
+            return collection[i];
+        }
     }
+    return null;
 }
 
 console.log(findByIdAndUpdate(id1, updateData1, students))
