@@ -42,18 +42,38 @@ const expected2 = [
  * @param {Array<Object>} collection
  * @returns {Array<Object>} The found objects.
  */
+
 function findObjects(criteria, collection) {
-    //Code goes here
+    const arr = [];
+    for(let i = 0; i < collection.length; i++) {
+        let match = true;
+
+        for(key in criteria) {
+            if(criteria[key] !== collection[i][key]) {
+                match = false;
+                break;
+            }
+        }
+
+        if(match) {
+            arr.push(collection[i]);
+        }
+    }
+    return arr;
 }
+
 console.log(findObjects(searchCriteria1, items));
 console.log(findObjects(searchCriteria2, items));
+
 
 /**
  * - Time: O(?).
  * - Space: O(?).
  */
+
 function findObjectsFunctional(criteria, collection) {
     //Code goes here
 }
-console.log(findObjectsFunctional(searchCriteria1, items));
-console.log(findObjectsFunctional(searchCriteria2, items));
+
+// console.log(findObjectsFunctional(searchCriteria1, items));
+// console.log(findObjectsFunctional(searchCriteria2, items));
