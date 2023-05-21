@@ -39,4 +39,4 @@ function findWord(str) {
 // Testing
 console.log(findWord(str1))
 console.log(findWord(str2))
-console.log(findWord(str3))
+console.log(findWord(str3)) 
