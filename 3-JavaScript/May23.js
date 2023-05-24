@@ -1,0 +1,105 @@
+/* 
+Given two strings S and T containing only lowercase letters and "#" characters,
+return if they are equal when both are typed into empty text editors.
+
+# character means a backspace character.
+i.e., after processing the backspaces, are the two strings equal?
+Bonus: solve in O(n) time
+*/
+
+const S1 = "ab#c";
+const T1 = "ad#c";
+const expected1 = true;
+// Explanation: Both S and T become "ac"
+
+const S2 = "ab##";
+const T2 = "c#d#";
+const expected2 = true;
+// Explanation: Both S and T become ""
+
+const S3 = "a##c";
+const T3 = "#a#c";
+const expected3 = true;
+// Explanation: Both S and T become "c"
+
+const S4 = "a#c";
+const T4 = "b";
+const expected4 = false;
+// Explanation: S becomes "c" while T becomes "b".
+
+/**
+ * Determines if the given strings are equal after the backspace characters
+ * "#" are processed.
+ * - Time: O(?).
+ * - Space: O(?).
+ * @param {string} S
+ * @param {string} T
+ * @returns {boolean} Whether the given strings are equal after backspaces
+ *    have been processed.
+ */
+function backspaceStringCompare(S, T) {
+    const arrS = []
+    const arrT = []
+
+    for(let i = 0; i< S.length; i++) {
+        arrS.push(S[i])
+    }
+
+    for(let i = 0; i< T.length; i++) {
+        arrT.push(T[i])
+    }
+
+    for(let j = 0; j < arrS.length; j++) {
+        if(arrS[j] === "#") {
+            if(j <= 0) {
+                arrS.splice(j, 1)
+            } else {
+                arrS.splice(j - 1, 2)
+            }
+            j = 0
+        }
+
+        if(arrT[j] === "#") {
+            if(j <= 0) {
+                arrT.splice(j, 1)
+            } else {
+                arrT.splice(j - 1, 2)
+            }
+            j = 0
+        }
+    }
+
+    return arrS
+}
+// console.log(backspaceStringCompare(S1, T1))
+// console.log(backspaceStringCompare(S2, T2))
+// console.log(backspaceStringCompare(S3, T3))
+// console.log(backspaceStringCompare(S4, T4))
+
+function backspaceStringCompare2(S, T) {
+    const arrS = []
+    const arrT = []
+
+    for(let i = 0; i < S.length; i++) {
+        if(S[i] === "#") {
+            arrS.pop()
+        } else {
+            arrS.push(S[i])
+        }
+    }
+
+    for(let i = 0; i < T.length; i++) {
+        if(T[i] === "#") {
+            arrS.pop()
+        } else {
+            arrS.push(T[i])
+        }
+    }
+
+    
+}
+
+console.log(backspaceStringCompare2(S1, T1))
+console.log(backspaceStringCompare2(S2, T2))
+console.log(backspaceStringCompare2(S3, T3))
+console.log(backspaceStringCompare2(S4, T4))
