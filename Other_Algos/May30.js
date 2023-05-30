@@ -29,4 +29,37 @@ const maxArea = function(height) {
 }
 
 // Running The Function
-console.log(maxArea(input))
+// console.log(maxArea(input))
+
+
+// Attempt 2
+// FASTER THAN ORIGINAL
+const maxArea2 = function(height) {
+    let max = 0
+
+    let i = 0
+    let j = height.length - 1
+
+    while(i <= j) {
+        let minH = 0
+        if(height[i] < height[j]) {
+            minH = height[i]
+        } else {
+            minH = height[j]
+        }
+
+        if((j - i) * minH > max) {
+            max = (j - i) * minH
+        }
+
+        if(height[i] < height[j]) {
+            i++
+        } else {
+            j--
+        }
+    }
+
+    return max
+}
+
+console.log(maxArea2(input))
