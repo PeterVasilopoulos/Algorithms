@@ -47,7 +47,13 @@ class SinglyLinkedList {
    * - Space: O(?).
    * @returns {boolean}
    */
-  isEmpty() {}
+  isEmpty() {
+    if(this.head === null) {
+      return true
+    } else {
+      return false
+    }
+  }
 
   /**
    * Creates a new node with the given data and inserts it at the back of
@@ -57,7 +63,22 @@ class SinglyLinkedList {
    * @param {any} data The data to be added to the new node.
    * @returns {SinglyLinkedList} This list.
    */
-  insertAtBack(data) {}
+  insertAtBack(data) {
+    const newBack = new ListNode(data)
+    
+    if(this.isEmpty) {
+      this.head = newBack
+      return this
+    } else {
+      let runner = this.head
+      while(runner.next != null) {
+        runner = runner.next
+      }
+      runner.next = newBack
+      return this
+    }
+
+  }
 
   /**
    * Creates a new node with the given data and inserts it at the back of
@@ -125,7 +146,7 @@ perfectLoopList.head.next.next.next = perfectLoopList.head;
 /* node 4 connects to node 2 */
 const loopList = new SinglyLinkedList().insertAtBackMany([1, 2, 3, 4]);
 loopList.head.next.next.next = loopList.head.next;
-
+1
 const sortedDupeList = new SinglyLinkedList().insertAtBackMany([
   1, 1, 1, 2, 3, 3, 4, 5, 5,
 ]);
