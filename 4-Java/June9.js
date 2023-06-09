@@ -50,7 +50,21 @@ class SinglyLinkedList {
    *    whose nodes will be added to the back of this list.
    * @returns {SinglyLinkedList} This list with the added nodes.
    */
-  concat(addList) {}
+  concat(addList) {
+    if(this.isEmpty()) {
+      return addList
+    }
+
+    let runner = this.head
+
+    while(runner.next) {
+      runner = runner.next
+    }
+
+    runner.next = addList.head
+
+    return this
+  }
 
   /**
    * Finds the node with the smallest data and moves that node to the front of
@@ -59,7 +73,36 @@ class SinglyLinkedList {
    * - Space: O(?).
    * @returns {SinglyLinkedList} This list.
    */
-  moveMinToFront() {}
+  moveMinToFront() {
+    if(this.isEmpty()) {
+      return null
+    }
+
+    let runner = this.head.next
+    let minNode = this.head
+
+    while(runner) {
+      if(runner.data < minNode.data) {
+        minNode = runner
+      }
+      runner = runner.next
+    }
+
+    let prev = this.head
+    let newRunner = this.head.next
+
+    while(newRunner != minNode) {
+      prev = prev.next
+      newRunner = newRunner.next
+    }
+
+    prev.next = prev.next.next
+
+    newRunner.next = this.head
+    this.head = newRunner
+
+    return this
+  }
 
   // EXTRA
   /**
@@ -73,7 +116,28 @@ class SinglyLinkedList {
    * @returns {SinglyLinkedList} The split list containing the nodes that are
    *    no longer in this list.
    */
-  splitOnVal(val) {}
+  splitOnVal(val) {
+    // Check if the list is empty
+    // if(this.isEmpty()) {
+    //   return null
+    // }
+
+    // let prev = this.head
+    // let runner = this.head.next
+    // let valNode;
+
+    // while(runner) {
+    //   if(runner.data === val) {
+    //     valNode = runner
+    //     break
+    //   } else {
+    //     prev = prev.next
+    //     runner = runner.next
+    //   }
+    // }
+
+
+  }
 
   // Day 4 ====================================================================
   /**
@@ -471,4 +535,11 @@ const sortedDupeList = new SinglyLinkedList().insertAtBackMany([
 ]);
 
 // Print your list like so:
-console.log(firstThreeList.toArr());
+// console.log(firstThreeList.toArr());
+
+
+// const newList = firstThreeList.concat(secondThreeList)
+// console.log(newList.toArr())
+
+const minTest = new SinglyLinkedList().insertAtBackMany([2, 3, 5, 2, 8, 1, 4])
+console.log(minTest.moveMinToFront().toArr())
