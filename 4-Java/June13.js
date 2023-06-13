@@ -251,6 +251,6 @@ threeLevelTree.root.right.left = new BSTNode(13);
     4    12  18  24  31  44 66  90
 */
 
-console.log(threeLevelTree.containsRecursive(15))
+console.log(threeLevelTree.containsRecursive(13541135))
 
-console.log(twoLevelTree.range())
+// console.log(twoLevelTree.range())
