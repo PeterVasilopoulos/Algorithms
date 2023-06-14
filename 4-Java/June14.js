@@ -48,7 +48,35 @@ class BinarySearchTree {
    * @param {number} newVal The data to be added to a new node.
    * @returns {BinarySearchTree} This tree.
    */
-  insert(newVal) {}
+  insert(newVal) {
+    const newNode = new BSTNode(newVal)
+
+    if (this.isEmpty()) {
+      this.root = newNode
+      return this
+    }
+
+    let current = this.root
+    let previous
+
+    while (current) {
+      previous = current
+
+      if (newVal > current.data) {
+        current = current.right
+      } else {
+        current = current.left
+      }
+    }
+
+    if (newVal > previous.data) {
+      previous.right = newNode
+    } else if (newVal < previous.data) {
+      previous.left = newNode
+    }
+
+    return this
+  }
 
   /**
    * Inserts a new node with the given newVal in the right place to preserver
@@ -60,7 +88,31 @@ class BinarySearchTree {
    *    the tree is being traversed.
    * @returns {BinarySearchTree} This tree.
    */
-  insertRecursive(newVal, curr = this.root) {}
+  insertRecursive(newVal, curr = this.root) {
+    if (this.isEmpty()) {
+      let newNode = new BSTNode(newVal)
+      this.root = newNode
+      return this
+    }
+
+    if (newVal > curr.data) {
+      if(curr.right) {
+        return this.insertRecursive(newVal, curr.right)
+      } else {
+        let newNode = new BSTNode(newVal)
+        curr.right = newNode
+      }
+    } else if (newVal < curr.data) {
+      if(curr.left) {
+        return this.insertRecursive(newVal, curr.left)
+      } else {
+        let newNode = new BSTNode(newVal)
+        curr.left = newNode
+      }
+    }
+
+    return this
+  }
 
   // Day 2 ====================================================================
   /**
@@ -227,7 +279,7 @@ class BinarySearchTree {
 
     console.log(
       ' '.repeat(spaceCnt < spaceIncr ? 0 : spaceCnt - spaceIncr) +
-        `${node.data}`
+      `${node.data}`
     );
 
     this.print(node.left, spaceCnt);
@@ -276,20 +328,41 @@ threeLevelTree.root.right.left = new BSTNode(13);
     4    12  18  24  31  44 66  90
 */
 
-const fullTree = new BinarySearchTree();
-fullTree
-  .insert(25)
-  .insert(15)
-  .insert(10)
-  .insert(22)
-  .insert(4)
-  .insert(12)
-  .insert(18)
-  .insert(24)
-  .insert(50)
-  .insert(35)
-  .insert(70)
-  .insert(31)
-  .insert(44)
-  .insert(66)
-  .insert(90);
+// const fullTree = new BinarySearchTree();
+// fullTree
+//   .insert(25)
+//   .insert(15)
+//   .insert(10)
+//   .insert(22)
+//   .insert(4)
+//   .insert(12)
+//   .insert(18)
+//   .insert(24)
+//   .insert(50)
+//   .insert(35)
+//   .insert(70)
+//   .insert(31)
+//   .insert(44)
+//   .insert(66)
+//   .insert(90);
+
+// fullTree.print()
+
+const newTree = new BinarySearchTree()
+newTree.insertRecursive(25)
+newTree.insertRecursive(15)
+newTree.insertRecursive(10)
+newTree.insertRecursive(22)
+newTree.insertRecursive(4)
+newTree.insertRecursive(12)
+newTree.insertRecursive(18)
+newTree.insertRecursive(24)
+newTree.insertRecursive(50)
+newTree.insertRecursive(35)
+newTree.insertRecursive(70)
+newTree.insertRecursive(31)
+newTree.insertRecursive(44)
+newTree.insertRecursive(66)
+newTree.insertRecursive(90)
+
+newTree.print()
