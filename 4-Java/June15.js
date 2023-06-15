@@ -54,10 +54,10 @@ class BinarySearchTree {
       return null
     }
 
-    vals.push(node.data)
-
-    if(node.left) {
-      return this.toArrPreorder(node.left, vals)
+    if(node) {
+      vals.push(node.data)
+      this.toArrPreorder(node.left, vals)
+      this.toArrPreorder(node.right, vals)
     }
 
     return vals
@@ -73,7 +73,19 @@ class BinarySearchTree {
    * @param {Array<number>} vals The data that has been visited so far.
    * @returns {Array<number>} The vals in DFS Preorder once all nodes visited.
    */
-  toArrInorder(node = this.root, vals = []) {}
+  toArrInorder(node = this.root, vals = []) {
+    if(this.isEmpty()) {
+      return null
+    }
+
+    if(node) {
+      this.toArrInorder(node.left, vals)
+      vals.push(node.data)
+      this.toArrInorder(node.right, vals)
+    }
+
+    return vals
+  }
 
   /**
    * DFS Postorder (Left, Right, CurrNode)
@@ -84,7 +96,19 @@ class BinarySearchTree {
    * @param {Array<number>} vals The data that has been visited so far.
    * @returns {Array<number>} The vals in DFS Preorder once all nodes visited.
    */
-  toArrPostorder(node = this.root, vals = []) {}
+  toArrPostorder(node = this.root, vals = []) {
+    if(this.isEmpty()) {
+      return null
+    }
+
+    if(node) {
+      this.toArrInorder(node.left, vals)
+      this.toArrInorder(node.right, vals)
+      vals.push(node.data)
+    }
+
+    return vals
+  }
 
   // Day 3 ====================================================================
 
@@ -343,3 +367,5 @@ threeLevelTree.root.right.left = new BSTNode(13);
 //   .insert(90);
 
   console.log(threeLevelTree.toArrPreorder())
+  console.log(threeLevelTree.toArrInorder())
+  console.log(threeLevelTree.toArrPostorder())
