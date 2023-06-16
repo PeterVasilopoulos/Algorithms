@@ -57,7 +57,17 @@ class BinarySearchTree {
    * @param {Node} node The current node during the traversal of this tree.
    * @returns {number} The total number of nodes.
    */
-  size(node = this.root) {}
+  size(node = this.root, count = 0) {
+    if(!node) {
+      return count
+    }
+    if (node) {
+      this.size(node.left, count)
+      count++
+      this.size(node.right, count)
+    }
+    return count
+  }
 
   /**
    * Calculates the height of the tree which is based on how many nodes from
@@ -67,7 +77,16 @@ class BinarySearchTree {
    * @param {Node} node The current node during traversal of this tree.
    * @returns {number} The height of the tree.
    */
-  height(node = this.root) {}
+  height(node = this.root, count = 0) {
+
+    if(node.left) {
+      return this.height(node.left, count++)
+    } else if(node.right) {
+      return this.height(node.right, count++)
+    } else {
+      return count
+    }
+  }
 
   /**
    * Determines if this tree is a full tree. A full tree is a tree where every
@@ -411,20 +430,23 @@ threeLevelTree.root.right.left = new BSTNode(13);
     4    12  18  24  31  44 66  90
 */
 
-const fullTree = new BinarySearchTree();
-fullTree
-  .insert(25)
-  .insert(15)
-  .insert(10)
-  .insert(22)
-  .insert(4)
-  .insert(12)
-  .insert(18)
-  .insert(24)
-  .insert(50)
-  .insert(35)
-  .insert(70)
-  .insert(31)
-  .insert(44)
-  .insert(66)
-  .insert(90);
+// const fullTree = new BinarySearchTree();
+// fullTree
+//   .insert(25)
+//   .insert(15)
+//   .insert(10)
+//   .insert(22)
+//   .insert(4)
+//   .insert(12)
+//   .insert(18)
+//   .insert(24)
+//   .insert(50)
+//   .insert(35)
+//   .insert(70)
+//   .insert(31)
+//   .insert(44)
+//   .insert(66)
+//   .insert(90);
+
+  console.log(threeLevelTree.size())
+// console.log(threeLevelTree.height())
