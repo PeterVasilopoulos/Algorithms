@@ -24,7 +24,7 @@ class MinHeap {
    * @returns {?number} Null if empty.
    */
   top() {
-    if(this.heap.length > 1) {
+    if (this.heap.length > 1) {
       return this.heap[1]
     } else {
       return null
@@ -46,15 +46,15 @@ class MinHeap {
     let newIndex = this.heap.length - 1
     let parent = Math.floor(newIndex / 2)
 
-  while(this.heap[newIndex] < this.heap[parent]) {
-    let temp = parent
+    while (this.heap[newIndex] < this.heap[parent]) {
+      let temp = parent
 
-    this.heap[newIndex] = this.heap[parent]
-    this.heap[parent] = num
+      this.heap[newIndex] = this.heap[parent]
+      this.heap[parent] = num
 
-    newIndex = parent
-    parent = Math.floor(newIndex / 2)
-  }
+      newIndex = parent
+      parent = Math.floor(newIndex / 2)
+    }
   }
 
   /**
@@ -71,7 +71,7 @@ class MinHeap {
 
     console.log(
       " ".repeat(spaceCnt < spaceIncr ? 0 : spaceCnt - spaceIncr) +
-        `${this.heap[parentIdx]} (${parentIdx})`
+      `${this.heap[parentIdx]} (${parentIdx})`
     );
 
     this.printHorizontalTree(parentIdx * 2, spaceCnt);
@@ -86,7 +86,7 @@ newHeap.insert(8)
 newHeap.insert(10)
 newHeap.insert(9)
 newHeap.insert(15)
-newHeap.insert(6) 
-newHeap.insert(1) 
+newHeap.insert(6)
+newHeap.insert(1)
 
 newHeap.printHorizontalTree()
