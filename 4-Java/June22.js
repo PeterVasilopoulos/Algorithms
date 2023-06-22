@@ -28,7 +28,22 @@ class DoublyLinkedList {
      * @param {any} data The data for the new node.
      * @returns {DoublyLinkedList} This list.
      */
-    insertAtFront(data) { }
+    insertAtFront(data) {
+        const newNode = new Node(data); // Create a new node
+
+        if (this.head !== null) {
+            this.head.previous = newNode; // Update previous pointer of current head
+        }
+
+        newNode.next = this.head; // Set next pointer of new node to current head
+        newNode.previous = null; // Set previous pointer of new node to null
+
+        this.head = newNode; // Update head to new node
+
+        this.size++
+
+        return this;
+    }
 
     /**
      * Creates a new node and adds it at the back of this list.
@@ -37,7 +52,25 @@ class DoublyLinkedList {
      * @param {any} data The data for the new node.
      * @returns {DoublyLinkedList} This list.
      */
-    insertAtBack(data) { }
+    insertAtBack(data) {
+        let newNode = new Node(data)
+
+        // If the list is null, insert at head
+        if (this.head == null) {
+            this.head = newNode
+            this.tail = newNode
+            this.size++
+            return this
+        }
+
+        this.tail.next = newNode
+        newNode.prev = this.tail
+        this.tail = newNode
+
+        this.size++
+
+        return this
+    }
 
     // EXTRA
     /**
@@ -46,7 +79,15 @@ class DoublyLinkedList {
      * - Space: O(?).
      * @returns {any} The data of the removed node.
      */
-    removeMiddleNode() { }
+    removeMiddleNode() {
+        if(this.size % 2 === 0) {
+            return null
+        }
+
+        const middle = Math.floor(this.size / 2)
+
+        
+    }
 
     /**
      * Determines if this list is empty.
