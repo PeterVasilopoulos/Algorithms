@@ -84,9 +84,29 @@ class DoublyLinkedList {
             return null
         }
 
-        const middle = Math.floor(this.size / 2)
+        if(this.size % 2 === 1) {
+            const data = this.head.data
+            this.head = null
+            this.tail = null
+            return data
+        }
 
-        
+        const middle = Math.floor(this.size / 2) + 1
+        let runner = this.head
+        for (let i = 1; i < middle; i++) {
+            runner = runner.next
+        }
+
+        const prevNode = runner.prev
+        const nextNode = runner.next
+
+        prevNode.next = nextNode
+        nextNode.prev = prevNode
+
+        runner.prev = null
+        runner.next = null
+
+        return runner.data
     }
 
     /**
@@ -130,17 +150,25 @@ class DoublyLinkedList {
 const emptyList = new DoublyLinkedList();
 
 /**************** Uncomment these test lists after insertAtBack is created. ****************/
-  // const singleNodeList = new DoublyLinkedList().insertAtBack(1);
-  // const biNodeList = new DoublyLinkedList().insertAtBack(1).insertAtBack(2);
-  // const firstThreeList = new DoublyLinkedList().insertAtBackMany([1, 2, 3]);
-  // const secondThreeList = new DoublyLinkedList().insertAtBackMany([4, 5, 6]);
-  // const unorderedList = new DoublyLinkedList().insertAtBackMany([
-  //   -5,
-  //   -10,
-  //   4,
-  //   -3,
-  //   6,
-  //   1,
-  //   -7,
-  //   -2,
-  // ]);
+const singleNodeList = new DoublyLinkedList().insertAtBack(1);
+const biNodeList = new DoublyLinkedList().insertAtBack(1).insertAtBack(2);
+const firstThreeList = new DoublyLinkedList().insertAtBackMany([1, 2, 3]);
+const secondThreeList = new DoublyLinkedList().insertAtBackMany([4, 5, 6]);
+const unorderedList = new DoublyLinkedList().insertAtBackMany([
+    -5,
+    -10,
+    4,
+    -3,
+    6,
+    1,
+    -7,
+    -2,
+]);
+
+
+unorderedList.insertAtBack(22)
+console.log(unorderedList.toArray())
+console.log(unorderedList.removeMiddleNode())
+
+console.log(singleNodeList.toArray())
+console.log(singleNodeList.removeMiddleNode())
