@@ -68,11 +68,13 @@ class DoublyLinkedList {
    * @returns {boolean} Indicates if the new node was added.
    */
     insertAfter(targetVal, newVal) {
+        // If tail is target val, insert after
         if (this.tail == targetVal) {
             this.insertAtBack(newVal);
-            return this;
+            return true;
         }
 
+        // Create a runner that starts at the head and one that starts at the tail
         let headRunner = this.head
         let tailRunner = this.tail
 
@@ -130,6 +132,12 @@ class DoublyLinkedList {
      * @returns {boolean} Indicates if the new node was added.
      */
     insertBefore(targetVal, newVal) {
+        // If head is target val, insert before
+        if (this.head == targetVal) {
+            this.insertAtFront(newVal);
+            return true;
+        }
+
         // Create a runner that starts at the head and one that starts at the tail
         let headRunner = this.head
         let tailRunner = this.tail
@@ -152,6 +160,15 @@ class DoublyLinkedList {
             // Increments variables if value is not found
             headRunner = headRunner.next
             tailRunner = tailRunner.prev
+        }
+
+        if (foundVal == null) {
+            if (headRunner.data == targetVal) {
+                foundVal = headRunner;
+            }
+            if (tailRunner.data == targetVal) {
+                foundVal = tailRunner;
+            }
         }
 
         if (foundVal) {
@@ -217,5 +234,5 @@ const unorderedList = new DoublyLinkedList().insertAtBackMany([
     -2,
 ]);
 
-console.log(unorderedList.insertAfter(-7, 100))
+console.log(unorderedList.insertBefore(-7, 100))
 console.log(unorderedList.toArray())
