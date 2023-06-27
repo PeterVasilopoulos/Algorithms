@@ -50,7 +50,7 @@ class Stack {
      * - Space: O(1).
      * @returns {boolean}
      */
-    isEmpty() { }
+    isEmpty() {}
 
     /**
      * Gets the count of items in the stack.
