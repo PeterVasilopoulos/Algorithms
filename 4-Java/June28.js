@@ -247,16 +247,15 @@ function compareQueue(q1, q2) {
     let same = true
 
     for (let i = 0; i < size; i++) {
-        let q1Item = q1.dequeue
-        let q2Item = q2.dequeue
+        let q1Item = q1.dequeue()
+        let q2Item = q2.dequeue()
 
-        console.log("Q1 DATA:", q1Item)
-        if (q1Item.data !== q2Item.data) {
+        if (q1Item !== q2Item) {
             same = false
         }
 
-        q1.enqueue(q1Item.data)
-        q2.enqueue(q2Item.data)
+        q1.enqueue(q1Item)
+        q2.enqueue(q2Item)
     }
 
     return same
