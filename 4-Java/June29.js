@@ -165,8 +165,8 @@ class BinarySearchTree {
      * @returns {Array<number>} The data of all nodes in BFS order.
      */
     toArrLevelorder(current = this.root) {
-        if(this.isEmpty()) {
-            return null
+        if(!current) {
+            return []
         }
 
         let data = []
