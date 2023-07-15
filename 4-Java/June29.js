@@ -187,7 +187,7 @@ class BinarySearchTree {
             }
         }
 
-        return data 
+        return data
     }
 
 
